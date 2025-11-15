@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Trang Danisa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #ffffff;
+    --accent: #111827;
+    --muted: #6b7280;
+    --primary: yellow;
+    --header-h: 55px;
+    --max-w: 1280px;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    font-family: 'Cormorant Garamond', serif;
+    color:var(--accent);
+    background: var(--bg);
+  }
+
+  .logo-section {
+    background: white;
+    text-align: center;
+    padding: 20px 0 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .logo-section img {
+    height: 80px;
+    width: 100%;
+    display: block;
+    margin: 0;
+  }
+
+  .site-header {
+    background: #111827;
+    box-shadow: 0 1px 6px rgba(15,23,42,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .heaer-inner{
+    max-width:var(--max-w);
+    margin:0 auto;
+    height:var(--header-h);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+    position: relative;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex:1;
+    justify-content:flex-start;
+  }
+  .nav a{
+    text-decoration:none;
+    color:white;
+    padding:10px 12px;
+    font-size:18px;
+    font-weight:600;
+    white-space:nowrap;
+    letter-spacing:0.5px;
+    transition: all 0.3s ease;
+  }
+  .nav a:hover {
+    color: var(--primary);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #827;
+    min-width: 220px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 100;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 14px;
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .dropdown-content a:hover {
+    background: rgba(255,255,255,0.1);
+    color: yellow;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(5px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .nav.left {
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.nav.right {
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.search-input{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:6px;              
+  border-radius:999px;
+  padding:5px 10px;     
+  border:1px solid rgba(255,255,255,0.2);
+  background:#fff;
+  min-width:220px;      
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-input input{
+  font-size:14px;      
+}
+
+  .search-input input{
+    border:0;
+    outline:none;
+    font-size:16px;
+    width:100%;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .search-input svg{color:var(--muted);}
+
+  .search-input .cart-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    padding: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .search-input .cart-btn:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+
+  .icon-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px;
+    border-radius:8px;
+    background:transparent;
+    border:0;
+    cursor:pointer;
+    color:white;
+    transition: 0.3s;
+    position: relative;
+  }
+  .icon-btn:hover{
+    color: var(--primary);
+  }
+
+  .account-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .account-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #827;
+    min-width: 220px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(5px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .account-dropdown:hover .account-menu,
+  .account-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(10px);
+  }
+
+  .account-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+  }
+
+  .account-menu a {
+    display: block;
+    padding: 12px 16px;
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .account-menu a:hover {
+    background: rgba(255,255,255,0.1);
+    color: yellow;
+  }
+
+.menu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+  .menu img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    background: #000;
+  }
+  .video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    pointer-events: none;
+  }
+.gallery {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 260px;  
+  object-fit: cover;
+  display: block;
+}
+
+.gallery img:first-child,
+.gallery img:last-child {
+  grid-column: span 2;
+  height: 260px; 
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="logo-section">
+  <img src="anhll.png" alt="Logo Danisa" />
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <nav class="nav left">
+      <div class="dropdown">
+        <a href="#">Bảo Tồn Di Sản</a>
+        <div class="dropdown-content">
+          <a href="#">Lịch sử</a>
+          <a href="#">Công thức nổi tiếng</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#">Khoảnh khắc Hoàng Gia</a>
+        <div class="dropdown-content">
+          <a href="#">Món Quà Tình Yêu</a>
+          <a href="#">Món Quà Tri Ân</a>
+          <a href="#">Món Quà Hạnh Phúc</a>
+          <a href="#">Món Quà Đẳng Cấp</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="search-input">
+      <svg width="18" height="18" viewBox="0 0 24 24">
+        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      </svg>
+      <input type="search" placeholder="Tìm sản phẩm..." />
+      <button class="cart-btn" aria-label="Giỏ hàng">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path d="M6 6h15l-1.5 9h-12L4 2H2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="10" cy="20" r="1" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+
+<nav class="nav right">
+      <div class="dropdown">
+        <a href="#">Lựa chọn Đẳng cấp</a>
+        <div class="dropdown-content">
+          <a href="#">Bánh Quy Bơ</a>
+          <a href="#">Bánh Quy Bơ Truyền Thống</a>
+          <a href="#">Bánh Quy Bơ Sô-Cô-La Hạt Điều</a>
+          <a href="#">Bánh Quy Bơ Nho Khô</a>
+          <a href="#">Bánh Quy Có Nhân</a>
+          <a href="#">Bánh Quy Nhân Dứa</a>
+          <a href="#">Các loại bánh Danisa</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#">Sự Hiện Diện Toàn Cầu</a>
+        <div class="dropdown-content">
+          <a href="#">Danisa trên các quốc gia</a>
+          <a href="#">Tin tức và sự kiện</a>
+        </div>
+      </div>
+    </nav>
+
+ <div class="header-right">
+      <div class="account-dropdown">
+        <button class="icon-btn" aria-label="Tài khoản">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="account-menu">
+          <a href="dangnhap.html">Đăng nhập</a>
+          <a href="fromdangky.html">Đăng ký</a>
+       
+          <a href="#">Tài khoản của tôi</a>
+           <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:0;">
+             <a href="#">Đăng xuất</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="menu">
+<section style="
+  background: url('anhnen3.jpg') center/cover no-repeat;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ✅ đẩy nội dung lên trên */
+  align-items: center;
+  padding: 20px 20px 60px 20px; /* ✅ giảm khoảng cách trên */
+  text-align: center;
+  color: white;
+">
+<div class="gallery">
+  <img style="height: 260px;" src="img1.png" alt="">
+  <img src="img2.png" alt="">
+  <img src="img3.png" alt="">
+    <img src="img4.png" alt="">
+</div>
+</section>
+
+
+
+
+</div>
+
+
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const accountDropdown = document.querySelector(".account-dropdown");
+  if (currentUser) {
+    const nameTag = document.createElement("span");
+    nameTag.textContent = currentUser.username;
+    nameTag.style.color = "white";
+    nameTag.style.marginLeft = "8px";
+    nameTag.style.fontSize = "17px";
+    nameTag.style.fontWeight = "600";
+    accountDropdown.insertBefore(nameTag, accountDropdown.querySelector(".account-menu"));
+    const menuLinks = accountDropdown.querySelectorAll(".account-menu a");
+    menuLinks[0].style.display = "none"; 
+    menuLinks[1].style.display = "none"; 
+  }
+
+  const logoutLink = document.querySelector(".account-menu a:last-child");
+  logoutLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    localStorage.removeItem("currentUser");
+    alert("Đăng xuất thành công!");
+    window.location.href = "dangnhap.html";
+  });
+});
+</script>
+<footer style="
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:20px 0;
+  margin-top:40px;
+  font-size:17px;
+  line-height:1.8;
+  font-weight:500;
+">
+  <div>
+      <a href="#" style="color:white; text-decoration:none; margin:0 8px;">Đã được bảo lưu mọi quyền</a> |
+    <a href="lienhevoichungtoi.html" style="color:white; text-decoration:none; margin:0 8px;">Liên hệ với chúng tôi</a> |
+    <a href="dieukhoandieukien.html" style="color:white; text-decoration:none; margin:0 8px;">Điều khoản và Điều kiện</a> |
+    <a href="chinhsachbaomat.html" style="color:white; text-decoration:none; margin:0 8px;">Chính sách bảo mật</a>
+  </div>
+</footer>
+
+
+</body>
+</html>
