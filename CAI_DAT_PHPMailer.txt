@@ -1,0 +1,88 @@
+═══════════════════════════════════════════════════════════════
+  HƯỚNG DẪN CÀI ĐẶT PHPMailer - CÁCH ĐƠN GIẢN NHẤT
+═══════════════════════════════════════════════════════════════
+
+📦 BƯỚC 1: TẢI PHPMailer
+─────────────────────────────────────────────────────────────
+1. Truy cập: https://github.com/PHPMailer/PHPMailer
+2. Click nút "Code" (màu xanh) → "Download ZIP"
+3. Hoặc truy cập trực tiếp: 
+   https://github.com/PHPMailer/PHPMailer/archive/refs/heads/master.zip
+
+📁 BƯỚC 2: GIẢI NÉN VÀ COPY FILE
+─────────────────────────────────────────────────────────────
+1. Giải nén file ZIP vừa tải
+2. Mở thư mục giải nén → vào thư mục "src"
+3. Copy 3 file sau:
+   - Exception.php
+   - PHPMailer.php
+   - SMTP.php
+
+4. Paste vào thư mục:
+   D:\xampp\htdocs\tung_lam\Danisa-main (2)\Danisa-main\Danisa-main\PHPMailer\src\
+
+   Cấu trúc sẽ như sau:
+   PHPMailer/
+   └── src/
+       ├── Exception.php
+       ├── PHPMailer.php
+       └── SMTP.php
+
+🔐 BƯỚC 3: CẤU HÌNH GMAIL APP PASSWORD
+─────────────────────────────────────────────────────────────
+1. Đăng nhập Gmail: https://myaccount.google.com/
+2. Vào "Security" (Bảo mật)
+3. Tìm "2-Step Verification" → Bật nếu chưa bật
+4. Sau khi bật, quay lại Security
+5. Tìm "App passwords" (Mật khẩu ứng dụng)
+6. Chọn:
+   - App: Mail
+   - Device: Other (Custom name)
+   - Nhập tên: "Danisa Website"
+   - Click "Generate"
+7. Copy mật khẩu 16 ký tự (ví dụ: abcd efgh ijkl mnop)
+
+⚙️ BƯỚC 4: CẬP NHẬT CODE
+─────────────────────────────────────────────────────────────
+Mở 2 file sau và cập nhật:
+
+1. register.php (dòng ~19):
+   define("SMTP_PASS", "dán-mật-khẩu-16-ký-tự-vào-đây");
+
+2. quenmatkhau.php (dòng ~20):
+   define("SMTP_PASS", "dán-mật-khẩu-16-ký-tự-vào-đây");
+
+⚠️ LƯU Ý: Bỏ tất cả khoảng trắng trong mật khẩu!
+   Ví dụ: "abcd efgh ijkl mnop" → "abcdefghijklmnop"
+
+✅ BƯỚC 5: KIỂM TRA
+─────────────────────────────────────────────────────────────
+1. Mở trình duyệt
+2. Truy cập: http://localhost/tung_lam/Danisa-main (2)/Danisa-main/Danisa-main/register.php
+3. Điền thông tin và đăng ký
+4. Kiểm tra email inbox (có thể trong Spam)
+5. Nếu nhận được email OTP → THÀNH CÔNG! 🎉
+
+❌ XỬ LÝ LỖI THƯỜNG GẶP
+─────────────────────────────────────────────────────────────
+
+Lỗi: "PHPMailer not found"
+→ Kiểm tra đường dẫn file có đúng không
+→ Đảm bảo 3 file đã được copy vào PHPMailer/src/
+
+Lỗi: "SMTP connect() failed"
+→ Kiểm tra SMTP_USER và SMTP_PASS
+→ Đảm bảo đã tạo App Password (không dùng mật khẩu Gmail)
+
+Lỗi: "Authentication failed"
+→ Kiểm tra đã bật 2-Step Verification chưa
+→ Thử tạo App Password mới
+
+Email vào Spam
+→ Bình thường, kiểm tra thư mục Spam
+→ Có thể đánh dấu "Not spam" để Gmail nhớ
+
+═══════════════════════════════════════════════════════════════
+  Nếu gặp vấn đề, kiểm tra lại từng bước trên!
+═══════════════════════════════════════════════════════════════
+

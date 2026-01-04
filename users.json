@@ -1,0 +1,17 @@
+[
+    {
+        "username": "admin",
+        "password": "$2y$10$upR3b0f1hrBd7IrwaAMlhOovRCw8l4odtE3RXcqjtIrwcHHkuEsQi"
+    },
+    {
+        "username": "tlam",
+        "password": "$2y$10$FHNuqMUdS7VTEp3m74OSW.uKUIM3rekCB8K1VDLM4tk2nAplxxuzW"
+    },
+    {
+        "username": "tlam123",
+        "password": "$2y$10$txZ0mkuyEjeuKJZz7btsUOBjmieaYxfJR5PlZqmlM\/qJ6O3mhIZkG",
+        "ho_ten": "bố của các con",
+        "email": "lamhan1122@gmail.com",
+        "sdt": "0911888888"
+    }
+]

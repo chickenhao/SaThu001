@@ -1,0 +1,112 @@
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://tieudung.kinhtedothi.vn/dataimages/202401/09/huge/danisa-x-pmq---tet-2024---hinh-1_1704796718.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  form {
+    background: rgba(255, 255, 255, 0.55);
+    padding: 22px;
+    border-radius: 14px;
+    width: 330px;  
+    text-align: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 0 18px rgba(0,0,0,0.35);
+  }
+
+  .logo img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px);
+    padding: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 14px rgba(255,255,255,0.45);
+  }
+
+  label {
+    display: block;
+    margin-top: 8px;
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+ .otp-box {
+  display: flex;
+  align-items: center;   
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.otp-box input {
+  flex: 1;              
+  height: 38px;         
+}
+
+.otp-btn {
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 12px;
+  height: 38px;         
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;  
+}
+
+
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 14px;
+    background: #111827;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  button:hover { background: #e65c00; }
+  .otp-btn:hover { background: #e65c00; }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 14px;
+      background: #111827;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button[type="submit"]:hover { background: #e65c00; }
+
+    p { font-size: 13px; }
